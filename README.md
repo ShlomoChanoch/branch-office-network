@@ -36,4 +36,4 @@ The switch configuration shows a proactive security stance by shutting down port
 
 * `configs/`: Raw `.txt` files containing the `show running-config` output for the Router and Switch.
 * `img/`: Screenshots of the topology and successful connectivity tests (Pings/Web Browser).
-* 
+
