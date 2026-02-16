@@ -1,0 +1,103 @@
+Building configuration...
+
+Current configuration : 1305 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname Office-Router
+!
+!
+!
+enable secret 5 $1$mERr$oWrQ2lxSeZdMpHGhRODAH.
+!
+!
+ip dhcp excluded-address 192.168.1.100
+ip dhcp excluded-address 192.168.1.1
+!
+ip dhcp pool office
+ network 192.168.1.0 255.255.255.0
+ default-router 192.168.1.1
+ dns-server 209.165.200.225
+!
+!
+!
+ip cef
+ipv6 unicast-routing
+!
+no ipv6 cef
+!
+!
+!
+username admin secret 5 $1$mERr$oWrQ2lxSeZdMpHGhRODAH.
+!
+!
+license udi pid CISCO1941/K9 sn FTX1524W6K2-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.255.255.1 255.255.255.255
+!
+interface GigabitEthernet0/0
+ ip address dhcp
+ duplex auto
+ speed auto
+ ipv6 address FE80::1 link-local
+ ipv6 address 2000:DB8:ACAD:A::1/64
+!
+interface GigabitEthernet0/1
+ ip address 192.168.1.1 255.255.255.0
+ duplex auto
+ speed auto
+ ipv6 address FE80::1 link-local
+ ipv6 address 2000:DB8:ACAD:B::1/64
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip classless
+ip route 0.0.0.0 0.0.0.0 GigabitEthernet0/0 
+!
+ip flow-export version 9
+!
+!
+!
+banner motd ^CUnauthorized Access is Prohibited^C
+!
+!
+!
+!
+line con 0
+ password 7 0824415E000B00
+!
+line aux 0
+!
+line vty 0 4
+ login local
+ transport input ssh
+!
+!
+!
+end
